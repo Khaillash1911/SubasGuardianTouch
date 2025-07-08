@@ -169,7 +169,7 @@
             margin-left: 0;
         }
         .two-column-section p {
-            font-size: 1em;
+            font-size: 1.25em;
             color: var(--text-light);
             margin-bottom: 20px;
         }
@@ -309,10 +309,15 @@
         .slideshow-container {
             position: relative;
             width: 100%;
-            max-width: 900px; /* Desktop limit */
-            margin: auto;
+            max-width: 400px; /* Desktop limit */
+            aspect-ratio: 4 / 3; /* Modern browsers support this */
+            margin: 0px;
             overflow: hidden;
             border-radius: 12px;
+            background: #f8f8fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Individual slide styling */
@@ -321,11 +326,12 @@
             animation: fade 1s;
         }
 
-        img {
+        .slideshow-container img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
             border-radius: 12px;
+            display: block;
         }
 
         .fade {
@@ -381,6 +387,7 @@
         @media screen and (max-width: 480px) {
             .slideshow-container {
                 max-width: 100%;
+                margin-bottom: -30px;
             }
 
             .prev, .next {
@@ -399,6 +406,9 @@
             .two-column-section .image-column,
             .two-column-section .content-column {
                 max-width: 100%;
+            }
+            .two-column-section .content-column {
+                margin: 0px 10px 0px 10px;
             }
             .stats-grid {
                 flex-direction: column;
@@ -425,17 +435,34 @@
             .extended-client-say-section {
                 padding: 40px 10px;
             }
+            .container {
+                padding: 0 10px;
+            }
             .two-column-section {
+                flex-direction: column;
+                gap: 30px;
                 padding: 30px 0;
             }
             .two-column-section .image-blob {
                 width: 220px;
                 height: 220px;
             }
-        }
+            /* Make sure text columns have margin on mobile */
+            .two-column-section .content-column {
+                margin: -20px 10px -20px 10px;
+                padding: 0 8px;
+            }
+            /* Place slideshow/image below text for mobile */
+            .two-column-section.growing-together.reversed {
+                flex-direction: column-reverse;
+            }
+            .two-column-section p {
+                font-size: 1.em;
+            }
+
         @media (max-width: 480px) {
             .nav-links {
-                gap: 10px;
+                gap: 0px;
             }
             .nav-links a {
                 padding: 5px 10px;
@@ -450,6 +477,12 @@
             }
             .testimonial-card {
                 padding: 20px;
+            }
+            .container {
+                padding: 0 5px;
+            }
+            .two-column-section .content-column {
+                padding: 0 4px;
             }
         }
     </style>
@@ -514,21 +547,6 @@
                         <h3>Growing Together</h3>
                         <p>As word spread about the benefits of our specialized approach, Suba's Guardian Touch quickly became a beloved resource in the community. By 2018, we had expanded our team to include certified lactation consultants, postnatal doulas, and pediatric massage therapists to provide comprehensive support for new families.</p>
                         <p>Our growth has always been guided by the needs of our clients. When mothers asked for more educational resources, we developed our signature workshop series, "Nurturing Touch for Life," which has now helped over 1,000 families develop confidence in caring for their babies.</p>
-                    </div>
-                </div>
-                
-                
-
-                </div>
-
-                <div class="two-column-section where-today">
-                    <div class="image-column">
-                        <div class="image-blob">Where We Are Today</div>
-                    </div>
-                    <div class="content-column">
-                        <h3>Where We Are Today</h3>
-                        <p>Today, Suba's Guardian Touch operates three wellness centers across the region and has partnered with five major hospitals to provide postnatal support services. Our team of 25 dedicated professionals serves over 500 families each month, offering a range of services from one-on-one massage sessions to group classes and community support groups.</p>
-                        <p>We're proud to have been recognized as a leader in maternal and infant wellness, receiving the Regional Excellence in Family Care Award in 2022. But our greatest achievement remains the smiles of relaxed babies and the renewed confidence we see in the mothers we serve every day.</p>
                     </div>
                 </div>
             </div>
@@ -729,31 +747,22 @@
         let slideInterval;
 
         function showSlides(n) {
-            const slides = document.getElementsByClassName("mySlides");
+            const slideshow = document.querySelector('.slideshow-container');
+            const slides = slideshow.querySelectorAll(".mySlides");
             if (n >= slides.length) slideIndex = 0;
             if (n < 0) slideIndex = slides.length - 1;
 
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slides[slideIndex].style.display = "block";  
+            slides.forEach(slide => slide.style.display = "none");
+            slides[slideIndex].style.display = "block";
         }
 
-        // Show next or previous slide manually
         function plusSlides(n) {
-            clearInterval(slideInterval); // stop auto on manual nav
+            clearInterval(slideInterval);
             slideIndex += n;
             showSlides(slideIndex);
-            slideInterval = setInterval(() => plusSlides(1), 5000); // restart auto
+            slideInterval = setInterval(() => plusSlides(1), 5000);
         }
 
-        // Auto show slides every 5 seconds
-        function autoSlides() {
-            slideIndex++;
-            showSlides(slideIndex);
-        }
-
-        // Initialize
         document.addEventListener("DOMContentLoaded", () => {
             showSlides(slideIndex);
             slideInterval = setInterval(() => plusSlides(1), 5000);
