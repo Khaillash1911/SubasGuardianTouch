@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suba's Guardian Touch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="favicon_io/favicon-16x16.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --light-pink: #fce4ec;
+            --medium-pink: #ffade5;
+            --dark-pink: #ff70b8;
+            --purple: #a970ff;
+            --light-purple: #e0b0ff;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #fff;
+            --gradient-light-pink-purple: linear-gradient(to right, #ffade5, #e0b0ff);
+            --gradient-pink-purple: linear-gradient(to right, #ff70b8, #a970ff);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f8fa; /* A very light grey/off-white background */
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navbar Styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            background: var(--gradient-light-pink-purple);
+            border-radius: 50px;
+            padding: 8px 15px;
+            display: flex;
+            gap: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        .nav-links a.active,
+        .nav-links a:not(.disabled):hover { /* Apply hover only if not disabled */
+            background-color: rgba(255, 255, 255, 0.2); /* Slight white overlay on hover/active */
+            color: var(--white);
+        }
+
+        .nav-links a.disabled {
+            color:#983ca0;
+        }
+
+        /* Hero Section (now contains all main content) */
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden; /* To contain the background blob */
+        }
+
+        .hero-blob-container {
+            position: absolute;
+            top: 50px; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px; /* Adjust size of the blob */
+            height: 300px; /* Adjust size of the blob */
+            background: var(--gradient-light-pink-purple);
+            border-radius: 50% 50% 50% 50%;
+            opacity: 0.8;
+            filter: blur(50px); /* Soften the edges */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 .nurturing {
+            color: var(--purple);
+        }
+
+        .hero-content h1 .touch {
+            color: var(--text-dark);
+        }
+
+        .hero-content h1 .for-moms-babies {
+            font-weight: normal;
+        }
+
+        .hero-content p {
+            font-size: 1.1em;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .hero-buttons .button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hero-buttons .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-buttons .book-session {
+            background: var(--gradient-pink-purple);
+            color: var(--white);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-buttons .learn-more {
+            background-color: var(--white);
+            color: var(--purple);
+            border: 2px solid var(--purple);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Our Services Section */
+        .our-services-section {
+            padding: 40px 20px;
+            background-color: var(--white); /* White background for this section */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-top: 40px; /* Space from previous section */
+        }
+
+        .section-header {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .section-header .highlight {
+            color: var(--purple);
+        }
+        .services-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 280px;
+            flex: 1;
+            min-width: 250px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto;
+            font-size: 2.5em;
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-size: 200% 200%;
+            animation: gradient-animation 5s ease infinite alternate; /* Same animation as blobs */
+        }
+        .service-card.service-1 .icon-circle { background: var(--service-card-1-bg); }
+        .service-card.service-2 .icon-circle { background: var(--service-card-2-bg); }
+        .service-card.service-3 .icon-circle { background: var(--service-card-3-bg); }
+        .service-card.service-4 .icon-circle { background: var(--service-card-4-bg); }
+
+
+        .service-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            font-size: 0.95em;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        .circle-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover; /* Ensures the image covers the circle without distortion */
+        }
+
+        /* Why Choose Section (now nested within Home section) */
+        .why-choose-section {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: var(--light-pink);
+            margin-top: 60px; /* Add some space between hero and this part */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .why-choose-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+
+        .why-choose-section h2 .gentle-touch-highlight { /* Changed class name for highlight */
+            color: var(--dark-pink);
+        }
+
+        .why-choose-section p.subtitle {
+            font-size: 1.1em;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .features-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            max-width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee; /* Subtle border */
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card .icon-background {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(10px);
+            z-index: 0;
+        }
+
+        .feature-card.certified .icon-background {
+            background-color: var(--dark-pink);
+        }
+        .feature-card.bonding .icon-background {
+            background-color: var(--medium-pink);
+        }
+        .feature-card.holistic .icon-background {
+            background-color: var(--purple);
+        }
+
+
+        .feature-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1; /* Ensure icon is above background */
+        }
+
+        .feature-card.certified .icon {
+            background-color: var(--light-pink); /* Lighter pink for the icon background */
+            color: var(--dark-pink);
+        }
+
+        .feature-card.bonding .icon {
+            background-color: #e3f2fd; /* Light blue for icon */
+            color: #64b5f6; /* Medium blue for icon */
+        }
+
+        .feature-card.holistic .icon {
+            background-color: var(--light-purple);
+            color: var(--purple);
+        }
+
+
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            font-size: 1em;
+            color: var(--text-light);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* What Our Clients Say Section (now nested within Home section) */
+        .client-say-section {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: var(--white);
+            margin-top: 60px; /* Add some space between this and previous part */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .client-say-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .client-say-section h2 .gentle-touch-highlight { /* Changed class name for highlight */
+            color: var(--purple);
+        }
+
+        .client-say-section p.subtitle {
+            font-size: 1.1em;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .testimonials-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(10px);
+            z-index: 0;
+        }
+
+        .testimonial-card.sarah::before {
+            background-color: var(--medium-pink);
+        }
+        .testimonial-card.michelle::before {
+            background-color: var(--light-purple);
+        }
+
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .client-initials {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-light-pink-purple);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-right: 20px;
+        }
+
+        .client-name h3 {
+            margin: 0;
+            font-size: 1.4em;
+            color: var(--text-dark);
+        }
+
+        .client-name p {
+            margin: 5px 0 0;
+            font-size: 0.95em;
+            color: var(--text-light);
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            font-size: 1.05em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .read-more-reviews {
+            margin-top: 60px;
+            display: inline-block;
+            padding: 15px 35px;
+            border: 2px solid var(--purple);
+            border-radius: 30px;
+            background-color: var(--white);
+            color: var(--purple);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .read-more-reviews:hover {
+            background: var(--gradient-pink-purple);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #1a1a1a; /* Dark black */
+            color: #f0f0f0; /* Off-white text */
+            padding: 20px 10px;
+            text-align: center;
+            border-top: 3px solid var(--purple); /* A subtle premium border, change color as desired */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around; /* Distribute space around items */
+            align-items: flex-start; /* Align items to the top */
+            max-width: 1200px; /* Max width for content */
+            margin: 0 auto; /* Center the content block */
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            gap: 30px; /* Space between flex items */
+        }
+
+        .contact-info,
+        .social-media {
+            flex: 1; /* Allow these sections to grow and shrink */
+            min-width: 280px; /* Minimum width to prevent content from becoming too narrow */
+            margin-bottom: 20px; /* Space below sections on smaller screens */
+            text-align: left; /* Align text within these sections to the left */
+        }
+
+        .contact-info h3,
+        .social-media h3 {
+            color: var(--dark-pink); /* Accent color for headings */
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p .fas {
+            margin-right: 10px;
+            color: #f0f0f0; /* Icon color */
+            font-size: 1.1em;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start; /* Align social icons to the left */
+            margin-top: 15px;
+        }
+
+        .social-links li {
+            margin-right: 20px; /* Space between social icons */
+        }
+
+        .social-links a {
+            color: #f0f0f0; /* Icon color */
+            font-size: 28px; /* Larger icon size */
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+            display: inline-block; /* Allows transform to work properly */
+        }
+
+        .social-links a:hover {
+            color: var(--medium-pink); /* Brighter blue on hover */
+            transform: translateY(-3px); /* Subtle lift effect on hover */
+        }
+
+        .footer-bottom {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-top: 1px solid #333; /* Separator line */
+            font-size: 0.85em;
+            color: #b0b0b0; /* Lighter grey for copyright text */
+        }
+
+        .footer-links {
+            gap: 40px; /* More space between links */
+            flex-wrap: wrap;
+            justify-content: left;
+            margin-bottom: 0px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column; /* Stack items vertically */
+                align-items: center; /* Center items when stacked */
+                text-align: center; /* Center text within sections */
+            }
+
+            .contact-info,
+            .social-media {
+                min-width: unset; /* Remove min-width constraint */
+                width: 100%; /* Take full width */
+                margin-bottom: 00px;
+            }
+
+            .social-links {
+                justify-content: center; /* Center social icons */
+            }
+
+            .contact-info p {
+                justify-content: center; /* Center contact info lines */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                padding: 10px 15px;
+            }
+
+            .contact-info h3,
+            .social-media h3 {
+                font-size: 1.3em;
+                text-align: center;
+            }
+
+            .social-links{
+                margin-top: -30px;
+            }
+            .social-links a {
+                font-size: 24px;
+                margin: 0 8px; /* Adjust spacing for smaller screens */
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8em;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            .features-grid, .testimonials-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature-card, .testimonial-card {
+                max-width: 90%;
+            }
+            .why-choose-section h2, .client-say-section h2 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
+            .hero-section {
+                padding: 60px 15px;
+            }
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+            .hero-content p {
+                font-size: 1em;
+            }
+            .hero-buttons .button {
+                width: 80%;
+                font-size: 1em;
+            }
+            .why-choose-section, .client-say-section {
+                padding: 60px 15px;
+            }
+            .feature-card, .testimonial-card {
+                padding: 25px;
+            }
+            .client-info {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .client-initials {
+                margin: 0 0 15px 0;
+            }
+            .read-more-reviews {
+                padding: 12px 25px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 10px;
+            }
+            .nav-links a {
+                padding: 5px 10px;
+                font-size: 0.85em;
+            }
+            .hero-content h1 {
+                font-size: 1.8em;
+            }
+            .hero-content p {
+                font-size: 0.9em;
+            }
+            .why-choose-section h2, .client-say-section h2 {
+                font-size: 1.8em;
+            }
+            .feature-card h3 {
+                font-size: 1.3em;
+            }
+            .feature-card p, .testimonial-card .quote {
+                font-size: 0.9em;
+            }
+            .client-name h3 {
+                font-size: 1.2em;
+            }
+            .client-name p {
+                font-size: 0.85em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-links" id="navbar">
+                <a href="about.html" >About Us</a> 
+                <a href="index.html" class="disabled" data-page="gentle-touch">Suba's Guardian Touch</a>
+                <a href="#contact-us" data-page="contact-us">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section page-section">
+            <div class="hero-blob-container"></div>
+            <div class="hero-content">
+                <div class="heart-icon-wrapper">
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.03L12 21.35Z" fill="white"/>
+                    </svg>
+                </div>
+                <h1><span class="nurturing">Nurturing</span> <span class="touch">Touch</span> <br><span class="for-moms-babies">for Moms & Babies</span></h1>
+                <p>Experience the gentle power of therapeutic massage designed specifically for mothers and their little ones. Strengthen your bond while enhancing wellbeing.</p>
+                <div class="hero-buttons">
+                    <button onclick="window.location.href='tel:+6597259400'" class="button book-session" >Book a Session</button>
+                    <button onclick="window.location.href='about.html'" class="button learn-more">Learn More</button>
+                </div>
+            </div>
+
+        <!-- Our Services Section -->
+        <section class="our-services-section page-section">
+            <div class="container">
+                <h2 class="section-header">Our <span class="highlight">Services</span></h2>
+                <p class="section-subtitle">Explore our thoughtfully tailored services designed to support the well-being of both mothers and babies with care and comfort.</p>
+                <div class="services-grid">
+                    <div class="service-card service-1">
+                        <div class="icon-circle">
+                            <!-- Postnatal Massage -->
+                            <a href="#">
+                                <img src="imgs/postnatal.jpg" class="circle-img" alt="Light Bulb Icon"/>
+                            </a>
+                        </div>
+                        <h3>Postnatal Massage</h3>
+                        <p>Specialized treatments to support postpartum recovery, reduce muscle tension, and restore balance.</p>
+                    </div>
+                    <div class="service-card service-2">
+                        <div class="icon-circle">
+                            <!-- Baby Massage & Shower -->
+                            <a href="#">
+                                <img src="imgs/babymssg.jpg" class="circle-img" alt="Light Bulb Icon"/>
+                            </a>
+                        </div>
+                        <h3>Baby Massage & Shower</h3>
+                        <p>Tender touch and warm water come together to calm your baby, ease discomfort, and create joyful bonding moments.</p>
+                    </div>
+                    <div class="service-card service-3">
+                        <div class="icon-circle">
+                            <!-- Head & Shoulder Massage -->
+                            <a href="#">
+                                <img src="imgs/headshoulder.jpg" class="circle-img" alt="Light Bulb Icon"/>
+                            </a>
+                        </div>
+                        <h3>Head & Shoulder Massage</h3>
+                        <p>Relieve stress, ease tension, and melt away fatigue with focused massage techniques designed to relax your upper body and refresh your mind.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <div class="container">
+                <section class="why-choose-section">
+                    <h2>Why Choose <span class="gentle-touch-highlight">Suba's Guardian Touch</span></h2>
+                    <p class="subtitle">Our specialized approach combines traditional techniques with modern research to provide the best care for you and your baby.</p>
+                    <div class="features-grid">
+                        <div class="feature-card certified">
+                            <div class="icon-background"></div>
+                            <div class="icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99L18 11V6.39L12 3.19L6 6.39V11.01L12 11.99Z" fill="currentColor"/>
+                                    <path d="M12 11.99L18 11V6.39L12 3.19L6 6.39V11.01L12 11.99Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Certified Specialists</h3>
+                            <p>Our therapists are certified in both maternal and infant massage techniques, ensuring safe and effective care.</p>
+                        </div>
+                        <div class="feature-card bonding">
+                            <div class="icon-background"></div>
+                            <div class="icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.03L12 21.35Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Bonding Experience</h3>
+                            <p>Our sessions are crafted to strengthen the natural bond between mother and baby in the comfort of your own home, where nurturing touch creates a peaceful and loving connection.</p>
+                        </div>
+                        <div class="feature-card holistic">
+                            <div class="icon-background"></div>
+                            <div class="icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM15.5 12.5C15.5 13.33 14.83 14 14 14C13.17 14 12.5 13.33 12.5 12.5C12.5 11.67 13.17 11 14 11C14.83 11 15.5 11.67 15.5 12.5ZM10 12.5C10 13.33 9.33 14 8.5 14C7.67 14 7 13.33 7 12.5C7 11.67 7.67 11 8.5 11C9.33 11 10 11.67 10 12.5ZM12 18C10.68 18 9.57 17.34 8.84 16.32C9.56 15.42 10.7 15 12 15C13.3 15 14.44 15.42 15.16 16.32C14.43 17.34 13.32 18 12 18Z" fill="currentColor"/>
+                                    <path d="M12 4C7.59 4 4 7.59 4 12C4 16.41 7.59 20 12 20C16.41 20 20 16.41 20 12C20 7.59 16.41 4 12 4ZM15.5 12.5C15.5 13.33 14.83 14 14 14C13.17 14 12.5 13.33 12.5 12.5C12.5 11.67 13.17 11 14 11C14.83 11 15.5 11.67 15.5 12.5ZM10 12.5C10 13.33 9.33 14 8.5 14C7.67 14 7 13.33 7 12.5C7 11.67 7.67 11 8.5 11C9.33 11 10 11.67 10 12.5ZM12 18C10.68 18 9.57 17.34 8.84 16.32C9.56 15.42 10.7 15 12 15C13.3 15 14.44 15.42 15.16 16.32C14.43 17.34 13.32 18 12 18Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Holistic Wellness</h3>
+                            <p>We focus on the complete wellbeing of both mom and baby, addressing physical, emotional, and mental health.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="container">
+                <section class="client-say-section">
+                    <h2>What Our <span class="gentle-touch-highlight">Clients Say</span></h2>
+                    <p class="subtitle">Hear from mothers who have personally experienced the nurturing benefits of our expert massage services. Their stories reflect the care and comfort we bring to every home because your well-being is our priority.</p>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card sarah">
+                            <div class="client-info">
+                                <div class="client-initials">H</div>
+                                <div class="client-name">
+                                    <h3>Hasvany</h3>
+                                    <p>Mother of newborn</p>
+                                </div>
+                            </div>
+                            <p class="quote">"Sis Subathara did baby massage for both my first child in 2021 and I believe her skills made him grow strongly! So I engaged her again for my 2nd child in 2024! She's very understanding and reassuring. She had good knowledge about babies and gives good advice!"</p>
+                            <div class="stars">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card michelle">
+                            <div class="client-info">
+                                <div class="client-initials">I</div>
+                                <div class="client-name">
+                                    <h3>Ishu Gupta</h3>
+                                    <p>Mother of newborn</p>
+                                </div>
+                            </div>
+                            <p class="quote">"I loved the massages and how Subathra patiently took my queries and helped to answer them. She even went an extra mile to help me with baby massage and also didn’t show any signs of rush when I needed a little more time before we could start the session."</p>
+                            <div class="stars">
+                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="read-more-reviews">Read More Reviews</a>
+                </section>
+            </div>
+        </section>
+
+        <section id="contact-us" class="page-section" style="padding: 100px 20px; text-align: center; display: none;">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for more information or to book a session.</p>
+                </div>
+        </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +65 9725 9400</p>
+                <p><i class="fas fa-envelope"></i> suba_17@hotmail.com</p>
+            </div>
+                <h3>Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="https://www.instagram.com/subasguardiantouch/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100071837333188" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://wa.me/+6597259400" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="mailto:suba_17@hotmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+                    <li><a href="https://www.youtube.com/@subasguardiantouch" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>  
+        <div class="footer-bottom">
+            <p>&copy; 2025 Suba's Guardian Touch. All rights reserved.</p>
+        </div>
+    </footer>
+        
+        
+    </main>
+
+    <script>
+        // Highlight the current page in the navbar
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const currentPage = window.location.pathname.split('/').pop();
+
+            navLinks.forEach(link => {
+                // Remove all active classes first
+                link.classList.remove('active');
+
+                // For index.html, highlight "Home" (or Suba's Guardian Touch if you prefer)
+                if (currentPage === 'index.html' || currentPage === '') {
+                    if (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '') {
+                        link.classList.add('active');
+                    }
+                }
+                // For About Us page
+                else if (currentPage === 'about.html' && link.getAttribute('href').includes('about.html')) {
+                    link.classList.add('active');
+                }
+                // For Contact Us section (SPA style)
+                else if (window.location.hash === '#contact-us' && link.getAttribute('href').includes('#contact-us')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

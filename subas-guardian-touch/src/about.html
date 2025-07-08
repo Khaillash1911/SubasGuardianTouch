@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Suba's Guardian Touch</title>
+    <link rel="icon" type="image/png" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="favicon_io/favicon-16x16.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --light-pink: #fce4ec;
+            --medium-pink: #ffade5;
+            --dark-pink: #ff70b8;
+            --purple: #a970ff;
+            --light-purple: #e0b0ff;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #fff;
+            --gradient-light-pink-purple: linear-gradient(to right, #ffade5, #e0b0ff);
+            --gradient-pink-purple: linear-gradient(to right, #ff70b8, #a970ff);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f8fa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0px;
+        }
+
+        /* Navbar Styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            background: var(--gradient-light-pink-purple);
+            border-radius: 50px;
+            padding: 8px 15px;
+            display: flex;
+            gap: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-links a.active,
+        .nav-links a:not(.disabled):hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
+        .nav-links a.disabled {
+            color:#983ca0;
+        }
+
+        /* About Page Sections */
+        .page-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .section-header {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        .section-header .highlight {
+            color: var(--purple);
+        }
+        .section-subtitle {
+            font-size: 1.1em;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+        .two-column-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            padding: 60px 0;
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-bottom: 40px;
+        }
+        .two-column-section.reversed {
+            flex-direction: row-reverse;
+        }
+        .two-column-section .content-column {
+            flex: 1;
+            max-width: 550px;
+            text-align: left;
+        }
+        .two-column-section .image-column {
+            flex: 1;
+            max-width: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .two-column-section .image-blob {
+            width: 350px;
+            height: 350px;
+            border-radius: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            filter: blur(0px);
+            background-size: 200% 200%;
+            animation: gradient-animation 5s ease infinite alternate;
+        }
+        .two-column-section.our-journey .image-blob {
+            background: var(--gradient-light-pink-purple);
+        }
+        .two-column-section.growing-together .image-blob {
+            background: linear-gradient(to right, #a7d9ff, #c3f2d2);
+        }
+        .two-column-section.where-today .image-blob {
+            background: linear-gradient(to right, #ffc78d, #ffe6f3);
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .two-column-section h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        .two-column-section h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--gradient-pink-purple);
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-radius: 2px;
+        }
+        .two-column-section.reversed h3::after {
+            margin-left: 0;
+        }
+        .two-column-section p {
+            font-size: 1em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .trusted-by-section {
+            padding: 80px 20px;
+            background-color: #f8f8fa;
+        }
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+        .stat-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 250px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .stat-card h3 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: var(--gradient-pink-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        .stat-card p {
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+        .stat-card .underline {
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(to right, #b2e0ff, #d2f7e0);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        .our-values-section {
+            padding: 80px 20px;
+            background-color: var(--white);
+        }
+        .values-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .values-grid .feature-card {
+            max-width: 350px;
+        }
+        .values-grid .feature-card.compassionate .icon { background-color: var(--light-pink); color: var(--dark-pink); }
+        .values-grid .feature-card.evidence-based .icon { background-color: #e3f2fd; color: #64b5f6; }
+        .values-grid .feature-card.inclusive .icon { background-color: var(--light-purple); color: var(--purple); }
+        .values-grid .feature-card.compassionate .icon-background { background-color: var(--dark-pink); }
+        .values-grid .feature-card.evidence-based .icon-background { background-color: var(--medium-pink); }
+        .values-grid .feature-card.inclusive .icon-background { background-color: var(--purple); }
+        .extended-client-say-section {
+            padding: 80px 20px;
+            background-color: #f8f8fa;
+        }
+        .extended-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            max-width: none;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        .testimonial-card::before {
+            content: none;
+        }
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        .client-initials {
+            display: none;
+        }
+        .client-name h3 {
+            margin: 0;
+            font-size: 1.4em;
+            color: var(--text-dark);
+        }
+        .client-name p {
+            margin: 5px 0 0;
+            font-size: 0.95em;
+            color: var(--text-light);
+        }
+        .testimonial-card .quote {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            font-size: 1.05em;
+            position: relative;
+            z-index: 1;
+        }
+        .stars {
+            color: gold;
+        }
+
+        .center-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10vhx   ; /* full screen height */
+
+        }
+
+        .center-logo img {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+        }
+        
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px; /* Desktop limit */
+            margin: auto;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        /* Individual slide styling */
+        .mySlides {
+            display: none;
+            animation: fade 1s;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1s;
+        }
+
+        /* Arrow buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            user-select: none;
+            transition: background-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Fading animation */
+        @keyframes fade {
+            from {opacity: 0.4;}
+            to {opacity: 1;}
+        }
+
+        /* Responsive tweaks */
+        @media screen and (max-width: 768px) {
+            .prev, .next {
+                font-size: 18px;
+                padding: 8px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .slideshow-container {
+                max-width: 100%;
+            }
+
+            .prev, .next {
+                font-size: 16px;
+                padding: 6px;
+            }
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .two-column-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .two-column-section .image-column,
+            .two-column-section .content-column {
+                max-width: 100%;
+            }
+            .stats-grid {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .values-grid {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
+            .page-section,
+            .trusted-by-section,
+            .our-values-section,
+            .extended-client-say-section {
+                padding: 40px 10px;
+            }
+            .two-column-section {
+                padding: 30px 0;
+            }
+            .two-column-section .image-blob {
+                width: 220px;
+                height: 220px;
+            }
+        }
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 10px;
+            }
+            .nav-links a {
+                padding: 5px 10px;
+                font-size: 0.85em;
+            }
+            .section-header {
+                font-size: 1.5em;
+            }
+            .two-column-section .image-blob {
+                width: 120px;
+                height: 120px;
+            }
+            .testimonial-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-links" id="navbar">
+                <a href="about.html" >About Us</a> 
+                <a href="index.html" class="disabled" data-page="gentle-touch">Suba's Guardian Touch</a>
+                <a href="#contact-us" data-page="contact-us">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="center-logo">
+            <img src="imgs/BlueLogoRound-BGremove.png" alt="Gentle Touch Logo" width="120px" height="120px">
+        </div>
+        <!-- Our Journey Section -->
+        <section class="page-section">
+            <div class="container">
+                <h2 class="section-header">Our <span class="highlight">Journey</span></h2>
+                <p class="section-subtitle">The story of how Suba's Guardian Touch came to be and our path to helping countless mothers and babies.</p>
+
+                <div class="two-column-section our-journey">
+                    <div class="image-column">
+                        <div class="mySlides fade">
+                            <img src="" style="width:100%">
+                        </div>
+                    </div>
+                    <div class="content-column">
+                        <h3>The Beginning</h3>
+                        <p>Suba's Guardian Touch was born from founder Sarah Williams' personal experience as a new mother struggling with postpartum recovery while trying to soothe her colicky newborn. After discovering the transformative power of infant massage and receiving her own therapeutic treatments, Sarah recognized a gap in support services for new mothers and their babies.</p>
+                        <p>In 2015, with specialized training in both postnatal and infant massage, Sarah opened the first Suba's Guardian Touch studio with a mission to create a sanctuary where mothers could receive care while learning to nurture their babies through touch.</p>
+                    </div>
+                </div>
+
+                <div class="two-column-section growing-together reversed">
+                    <div class="slideshow-container">
+                        <div class="mySlides fade">
+                            <img src="imgs/Growing Together/gt1.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <img src="imgs/Growing Together/gt2.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <img src="imgs/Growing Together/gt3.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <img src="imgs/Growing Together/gt4.jpg" style="width:100%">
+                        </div>
+
+                        <!-- Arrows -->
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+                    </div>
+                    <div class="content-column">
+                        <h3>Growing Together</h3>
+                        <p>As word spread about the benefits of our specialized approach, Suba's Guardian Touch quickly became a beloved resource in the community. By 2018, we had expanded our team to include certified lactation consultants, postnatal doulas, and pediatric massage therapists to provide comprehensive support for new families.</p>
+                        <p>Our growth has always been guided by the needs of our clients. When mothers asked for more educational resources, we developed our signature workshop series, "Nurturing Touch for Life," which has now helped over 1,000 families develop confidence in caring for their babies.</p>
+                    </div>
+                </div>
+                
+                
+
+                </div>
+
+                <div class="two-column-section where-today">
+                    <div class="image-column">
+                        <div class="image-blob">Where We Are Today</div>
+                    </div>
+                    <div class="content-column">
+                        <h3>Where We Are Today</h3>
+                        <p>Today, Suba's Guardian Touch operates three wellness centers across the region and has partnered with five major hospitals to provide postnatal support services. Our team of 25 dedicated professionals serves over 500 families each month, offering a range of services from one-on-one massage sessions to group classes and community support groups.</p>
+                        <p>We're proud to have been recognized as a leader in maternal and infant wellness, receiving the Regional Excellence in Family Care Award in 2022. But our greatest achievement remains the smiles of relaxed babies and the renewed confidence we see in the mothers we serve every day.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted By Families Section -->
+        <section class="trusted-by-section page-section">
+            <div class="container">
+                <h2 class="section-header">Trusted By <span class="highlight">Families</span></h2>
+                <p class="section-subtitle">Our impact in numbers reflects the trust families place in our care.</p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>5,000+</h3>
+                        <p>Families Served</p>
+                        <span class="underline"></span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>98%</h3>
+                        <p>Satisfaction Rate</p>
+                        <span class="underline"></span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>25</h3>
+                        <p>Certified Specialists</p>
+                        <span class="underline"></span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>8</h3>
+                        <p>Years of Excellence</p>
+                        <span class="underline"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Values Section -->
+        <section class="our-values-section page-section">
+            <div class="container">
+                <h2 class="section-header">Our <span class="highlight">Values</span></h2>
+                <p class="section-subtitle">The principles that guide everything we do at Suba's Guardian Touch.</p>
+                <div class="values-grid">
+                    <div class="feature-card compassionate">
+                        <div class="icon-background"></div>
+                        <div class="icon">
+                            <!-- Heart Icon -->
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.03L12 21.35Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Compassionate Care</h3>
+                        <p>We approach every interaction with empathy, understanding the unique challenges of the postpartum period and early parenthood.</p>
+                    </div>
+                    <div class="feature-card evidence-based">
+                        <div class="icon-background"></div>
+                        <div class="icon">
+                            <!-- Flask Icon -->
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.99 3.99L12 6.99L9 3.99L6 6.99L3 3.99L2.99 3.99C1.89 3.99 1 4.88 1 5.99V14.99C1 16.1 1.89 17 2.99 17H12.99C14.1 17 15 16.1 15 14.99V5.99C15 4.88 14.11 3.99 13.01 3.99L14.99 3.99ZM20.99 11.99C20.99 10.88 20.1 9.99 18.99 9.99H17.99L17.99 7.99C17.99 6.88 17.1 5.99 15.99 5.99C14.88 5.99 13.99 6.88 13.99 7.99V9.99H12.99V5.99L14.99 3.99ZM20.99 11.99L20.99 11.99Z" fill="currentColor"/>
+                                <path d="M12 2L4 6V11C4 16.5 7.5 20.78 12 22C16.5 20.78 20 16.5 20 11V6L12 2ZM18 11L12 19.82L6 11V7.18L12 4.18L18 7.18V11Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Evidence-Based Practice</h3>
+                        <p>Our techniques are grounded in scientific research, ensuring that our services provide real benefits for mothers and babies.</p>
+                    </div>
+                    <div class="feature-card inclusive">
+                        <div class="icon-background"></div>
+                        <div class="icon">
+                            <!-- People/Community Icon -->
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 11C18.21 11 20 9.21 20 7C20 4.79 18.21 3 16 3C13.79 3 12 4.79 12 7C12 9.21 13.79 11 16 11ZM8 11C10.21 11 12 9.21 12 7C12 4.79 10.21 3 8 3C5.79 3 4 4.79 4 7C4 9.21 5.79 11 8 11ZM16 13C13.33 13 8 14.34 8 17V21H24V17C24 14.34 18.67 13 16 13ZM8 13C5.33 13 0 14.34 0 17V21H16V17C16 14.34 10.67 13 8 13Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Inclusive Community</h3>
+                        <p>We welcome all families, recognizing and celebrating the diversity of parenting journeys and family structures.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Our Clients Say Section (Extended Version) -->
+        <section class="extended-client-say-section page-section">
+            <div class="container">
+                <h2 class="section-header">Reviews From <span class="highlight">Happy Moms</span></h2>
+                <p class="section-subtitle">Real stories from families who have experienced the Suba's Guardian Touch difference.</p>
+                <div class="extended-testimonials-grid">
+                    <div class="testimonial-card jessica">
+                        <div class="client-info">
+                            <!-- Initials removed -->
+                            <div class="client-name">
+                                <h3>Jessica T.</h3>
+                                <p>Mother of 2-month-old</p>
+                            </div>
+                        </div>
+                        <p class="quote">"The infant massage class was a game-changer for my baby's colic. Now we have a beautiful bedtime routine that helps him sleep through the night!"</p>
+                        <div class="stars">
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card rachel">
+                        <div class="client-info">
+                            <!-- Initials removed -->
+                            <div class="client-name">
+                                <h3>Rachel K.</h3>
+                                <p>Mother of twins</p>
+                            </div>
+                        </div>
+                        <p class="quote">"The postnatal massage helped me recover from my C-section so much faster. The therapists are incredibly knowledgeable and caring."</p>
+                        <div class="stars">
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card amanda">
+                        <div class="client-info">
+                            <!-- Initials removed -->
+                            <div class="client-name">
+                                <h3>Amanda W.</h3>
+                                <p>First-time mom</p>
+                            </div>
+                        </div>
+                        <p class="quote">"As a first-time mom, I was so anxious about handling my newborn. The baby massage classes gave me confidence and a beautiful way to bond with my daughter."</p>
+                        <div class="stars">
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card david">
+                        <div class="client-info">
+                            <!-- Initials removed -->
+                            <div class="client-name">
+                                <h3>David L.</h3>
+                                <p>Father of 4-month-old</p>
+                            </div>
+                        </div>
+                        <p class="quote">"I was hesitant to join the dad's massage class, but it's been incredible for bonding with my son. The techniques are easy to learn and he loves our massage time!"</p>
+                        <div class="stars">
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card sophia">
+                        <div class="client-info">
+                            <!-- Initials removed -->
+                            <div class="client-name">
+                                <h3>Sophia M.</h3>
+                                <p>Mother of 8-month-old</p>
+                            </div>
+                        </div>
+                        <p class="quote">"The baby massage techniques have been wonderful for my daughter's development. I've noticed improvements in her sleep, digestion, and overall happiness."</p>
+                        <div class="stars">
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card lisa">
+                        <div class="client-info">
+                            <!-- Initials removed -->
+                            <div class="client-name">
+                                <h3>Lisa P.</h3>
+                                <p>Mother of 3-month-old</p>
+                            </div>
+                        </div>
+                        <p class="quote">"The prenatal massage helped me through a difficult pregnancy, and I've continued with postnatal sessions. The difference in my physical and mental wellbeing is remarkable."</p>
+                        <div class="stars">
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Highlight the current page in the navbar
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const currentPage = window.location.pathname.split('/').pop();
+
+            navLinks.forEach(link => {
+                // Remove all active classes first
+                link.classList.remove('active');
+
+                // For index.html, highlight "Home" (or Suba's Guardian Touch if you prefer)
+                if (
+                    (currentPage === '' || currentPage === 'index.html') && link.getAttribute('href').includes('#home')
+                ) {
+                    link.classList.add('active');
+                }
+                // For About Us page
+                else if (currentPage === 'about.html' && link.getAttribute('href').includes('about.html')) {
+                    link.classList.add('active');
+                }
+                // For Contact Us section (SPA style)
+                else if (window.location.hash === '#contact-us' && link.getAttribute('href').includes('#contact-us')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        let slideIndex = 0;
+        let slideInterval;
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("mySlides");
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex].style.display = "block";  
+        }
+
+        // Show next or previous slide manually
+        function plusSlides(n) {
+            clearInterval(slideInterval); // stop auto on manual nav
+            slideIndex += n;
+            showSlides(slideIndex);
+            slideInterval = setInterval(() => plusSlides(1), 5000); // restart auto
+        }
+
+        // Auto show slides every 5 seconds
+        function autoSlides() {
+            slideIndex++;
+            showSlides(slideIndex);
+        }
+
+        // Initialize
+        document.addEventListener("DOMContentLoaded", () => {
+            showSlides(slideIndex);
+            slideInterval = setInterval(() => plusSlides(1), 5000);
+        });
+    </script>
+</body>
+</html>
