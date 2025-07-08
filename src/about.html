@@ -456,6 +456,9 @@
             .two-column-section.growing-together.reversed {
                 flex-direction: column-reverse;
             }
+            .two-column-section.our-journey.reversed {
+                flex-direction: column-reverse;
+            }
             .two-column-section p {
                 font-size: 1.0em;
             }
@@ -465,6 +468,11 @@
             .nav-links {
                 gap: 0px;
             }
+            .center-logo img {
+                width: 200px;
+                height: 200px;
+                object-fit: contain;
+            }           
             .section-subtitle {
                 font-size: 1.1em;
             }
@@ -511,17 +519,42 @@
             <div class="container">
                 <h2 class="section-header">Our <span class="highlight">Journey</span></h2>
                 <p class="section-subtitle">The story of how Suba's Guardian Touch came to be and our path to helping countless mothers and babies.</p>
-
-                <div class="two-column-section our-journey">
-                    <div class="image-column">
+                
+                <div class="two-column-section our-journey reversed">
+                    <div class="slideshow-container">
                         <div class="mySlides fade">
-                            <img src="" style="width:100%">
+                            <img src="imgs/Beginning/B1.jpg" style="width:100%">
                         </div>
+                        <div class="mySlides fade">
+                            <img src="imgs/Beginning/B2.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="imgs/Beginning/B3.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="imgs/Beginning/B9.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="imgs/Beginning/B5.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="imgs/Beginning/B6.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="imgs/Beginning/B7.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="imgs/Beginning/B8.jpg" style="width:100%">
+                        </div>
+
+                        <!-- Arrows -->
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
                     </div>
                     <div class="content-column">
-                        <h3>The Beginning</h3>
-                        <p>Suba's Guardian Touch was born from founder Sarah Williams' personal experience as a new mother struggling with postpartum recovery while trying to soothe her colicky newborn. After discovering the transformative power of infant massage and receiving her own therapeutic treatments, Sarah recognized a gap in support services for new mothers and their babies.</p>
-                        <p>In 2015, with specialized training in both postnatal and infant massage, Sarah opened the first Suba's Guardian Touch studio with a mission to create a sanctuary where mothers could receive care while learning to nurture their babies through touch.</p>
+                        <h3>Our Journey</h3>
+                        <p>From humble beginnings, Suba's Guardian Touch has grown into a trusted name for nurturing care. Our journey began with a passion for supporting mothers and babies, and every step has been guided by our commitment to compassion and excellence.</p>
+                        <p>Through years of dedication, we've expanded our services and touched the lives of thousands of families, always striving to provide the best support and education for every parent and child we meet.</p>
                     </div>
                 </div>
 
@@ -530,19 +563,15 @@
                         <div class="mySlides fade">
                             <img src="imgs/Growing Together/gt1.jpg" style="width:100%">
                         </div>
-
                         <div class="mySlides fade">
                             <img src="imgs/Growing Together/gt2.jpg" style="width:100%">
                         </div>
-
                         <div class="mySlides fade">
                             <img src="imgs/Growing Together/gt3.jpg" style="width:100%">
                         </div>
-
                         <div class="mySlides fade">
                             <img src="imgs/Growing Together/gt4.jpg" style="width:100%">
                         </div>
-
                         <!-- Arrows -->
                         <a class="prev" onclick="plusSlides(-1)">❮</a>
                         <a class="next" onclick="plusSlides(1)">❯</a>
@@ -747,30 +776,64 @@
             });
         });
 
-        let slideIndex = 0;
-        let slideInterval;
+        // Multiple independent slideshows
 
-        function showSlides(n) {
-            const slideshow = document.querySelector('.slideshow-container');
-            const slides = slideshow.querySelectorAll(".mySlides");
-            if (n >= slides.length) slideIndex = 0;
-            if (n < 0) slideIndex = slides.length - 1;
+class Slideshow {
+    constructor(container) {
+        this.container = container;
+        this.slides = container.querySelectorAll('.mySlides');
+        this.index = 0;
+        this.interval = null;
 
-            slides.forEach(slide => slide.style.display = "none");
-            slides[slideIndex].style.display = "block";
-        }
+        // Bind arrow events
+        const prev = container.querySelector('.prev');
+        const next = container.querySelector('.next');
+        if (prev) prev.addEventListener('click', () => this.plusSlides(-1));
+        if (next) next.addEventListener('click', () => this.plusSlides(1));
 
-        function plusSlides(n) {
-            clearInterval(slideInterval);
-            slideIndex += n;
-            showSlides(slideIndex);
-            slideInterval = setInterval(() => plusSlides(1), 5000);
-        }
+        this.showSlides(this.index);
+        this.startAuto();
+        // Pause on mouse over
+        container.addEventListener('mouseenter', () => this.stopAuto());
+        container.addEventListener('mouseleave', () => this.startAuto());
+    }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            showSlides(slideIndex);
-            slideInterval = setInterval(() => plusSlides(1), 5000);
-        });
+    showSlides(n) {
+        if (this.slides.length === 0) return;
+        if (n >= this.slides.length) this.index = 0;
+        else if (n < 0) this.index = this.slides.length - 1;
+        else this.index = n;
+
+        this.slides.forEach(slide => slide.style.display = "none");
+        this.slides[this.index].style.display = "block";
+    }
+
+    plusSlides(n) {
+        this.showSlides(this.index + n);
+        this.restartAuto();
+    }
+
+    startAuto() {
+        if (this.interval) return;
+        this.interval = setInterval(() => this.plusSlides(1), 5000);
+    }
+
+    stopAuto() {
+        clearInterval(this.interval);
+        this.interval = null;
+    }
+
+    restartAuto() {
+        this.stopAuto();
+        this.startAuto();
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.slideshow-container').forEach(container => {
+        new Slideshow(container);
+    });
+});
     </script>
 </body>
 </html>
