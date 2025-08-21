@@ -36,7 +36,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0px;
         }
 
         /* Navbar Styles */
@@ -703,8 +703,11 @@
         }
 
         @media (max-width: 480px) {
+            .footer {
+            padding: 10px 15px;
+            }
             .nav-links {
-                gap: 10px;
+                gap: 0px;
             }
             .nav-links a {
                 padding: 5px 10px;
@@ -742,7 +745,7 @@
             <div class="nav-links" id="navbar">
                 <a href="about.html" >About Us</a> 
                 <a href="index.html" class="disabled" data-page="gentle-touch">Suba's Guardian Touch</a>
-                <a href="#contact-us" data-page="contact-us">Contact</a>
+                <a href="contactus.html" data-page="contact-us">Contact</a>
             </div>
         </nav>
     </header>
@@ -889,29 +892,26 @@
                 </div>
         </section>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="contact-info">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> +65 9725 9400</p>
-                <p><i class="fas fa-envelope"></i> suba_17@hotmail.com</p>
-            </div>
-                <h3>Follow Us</h3>
-                <ul class="social-links">
-                    <li><a href="https://www.instagram.com/subasguardiantouch/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://www.facebook.com/profile.php?id=100071837333188" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://wa.me/+6597259400" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
-                    <li><a href="mailto:suba_17@hotmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
-                    <li><a href="https://www.youtube.com/@subasguardiantouch" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
-                </ul>
-            </div>
-        </div>  
-        <div class="footer-bottom">
-            <p>&copy; 2025 Suba's Guardian Touch. All rights reserved.</p>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-phone"></i> +65 9725 9400</p>
+            <p><i class="fas fa-envelope"></i> suba_17@hotmail.com</p>
         </div>
-    </footer>
-        
-        
+        <h3>Follow Us</h3>
+        <ul class="social-links">
+            <li><a href="https://www.instagram.com/subasguardiantouch/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100071837333188" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://wa.me/+6597259400" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+            <li><a href="mailto:suba_17@hotmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+            <li><a href="https://www.youtube.com/@subasguardiantouch" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+    </div>  
+    <div class="footer-bottom">
+        <p>&copy; 2025 Suba's Guardian Touch. All rights reserved.</p>
+    </div>
+</footer>
     </main>
 
     <script>
@@ -935,7 +935,7 @@
                     link.classList.add('active');
                 }
                 // For Contact Us section (SPA style)
-                else if (window.location.hash === '#contact-us' && link.getAttribute('href').includes('#contact-us')) {
+                else if (currentPage === 'contactus.html' && link.getAttribute('href').includes('contactus.html')) {
                     link.classList.add('active');
                 }
             });

@@ -6,6 +6,7 @@
     <title>About Us - Suba's Guardian Touch</title>
     <link rel="icon" type="image/png" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" href="favicon_io/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
@@ -382,6 +383,13 @@
                 font-size: 18px;
                 padding: 8px;
             }
+            .stats-grid {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+            }
         }
 
         @media screen and (max-width: 480px) {
@@ -393,6 +401,13 @@
             .prev, .next {
                 font-size: 16px;
                 padding: 6px;
+            }
+            .stats-grid {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+                justify-content: center;
+                display: flex;
             }
         }
 
@@ -481,7 +496,7 @@
                 font-size: 0.85em;
             }
             .section-header {
-                font-size: 1.5em;
+                font-size: 2em;
             }
             .two-column-section .image-blob {
                 width: 120px;
@@ -497,6 +512,218 @@
                 padding: 0 4px;
             }
         }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            padding: 20px 10px;
+            text-align: center;
+            border-top: 3px solid #a970ff;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .contact-info,
+        .social-media {
+            flex: 1;
+            min-width: 280px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .contact-info h3,
+        .social-media h3 {
+            color: #ff70b8;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p .fas {
+            margin-right: 10px;
+            color: #f0f0f0;
+            font-size: 1.1em;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 15px;
+        }
+
+        .social-links li {
+            margin-right: 20px;
+        }
+
+        .social-links a {
+            color: #f0f0f0;
+            font-size: 28px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: #ffade5;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-top: 1px solid #333;
+            font-size: 0.85em;
+            color: #b0b0b0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .contact-info,
+            .social-media {
+                min-width: unset;
+                width: 100%;
+                margin-bottom: 0px;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .contact-info p {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .footer {
+                padding: 10px 15px;
+            }
+            .contact-info h3,
+            .social-media h3 {
+                font-size: 1.3em;
+                text-align: center;
+            }
+            .social-links{
+                margin-top: -30px;
+            }
+            .social-links a {
+                font-size: 24px;
+                margin: 0 8px;
+            }
+        }
+
+        /* New Styles for Lead Technician Section */
+        .lead-technician-section {
+            padding: 60px 20px 40px 20px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .lead-panel-grid {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .lead-panel-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 220px;
+            margin: 0 10px;
+        }
+
+        .lead-panel-img-frame {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--medium-pink);
+            box-shadow: 0 4px 16px rgba(170, 112, 255, 0.08);
+            margin-bottom: 18px;
+            background: var(--gradient-light-pink-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lead-panel-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .lead-panel-name {
+            font-size: 2em;
+            font-weight: 600;
+            color: var(--purple);
+            margin-bottom: 6px;
+            margin-top: 0;
+        }
+
+        .lead-panel-role {
+            font-size: 1em;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .lead-panel-grid {
+                gap: 24px;
+            }
+            .lead-panel-card {
+                max-width: 180px;
+            }
+            .lead-panel-img-frame {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lead-panel-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 18px;
+            }
+            .lead-panel-card {
+                max-width: 100%;
+            }
+            .lead-panel-img-frame {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 12px;
+            } 
+            .lead-panel-name {
+                font-size: 1.7em;
+            }
+            .lead-panel-role {
+                font-size: 0.95em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -505,7 +732,7 @@
             <div class="nav-links" id="navbar">
                 <a href="about.html" >About Us</a> 
                 <a href="index.html" class="disabled" data-page="gentle-touch">Suba's Guardian Touch</a>
-                <a href="#contact-us" data-page="contact-us">Contact</a>
+                <a href="contactus.html" data-page="contact-us">Contact</a>
             </div>
         </nav>
     </header>
@@ -517,7 +744,6 @@
         <!-- Our Journey Section -->
         <section class="page-section">
             <div class="container">
-                <h2 class="section-header">Our <span class="highlight">Journey</span></h2>
                 <p class="section-subtitle">The story of how Suba's Guardian Touch came to be and our path to helping countless mothers and babies.</p>
                 
                 <div class="two-column-section our-journey reversed">
@@ -585,6 +811,24 @@
             </div>
         </section>
 
+                <!-- Add Lead Technician Section Here -->
+        <section class="lead-technician-section page-section">
+            <div class="container">
+                <h2 class="section-header">Meet Our <span class="highlight">Lead Technician</span></h2>
+                <p class="section-subtitle">Our panel consists of experienced professionals dedicated to nurturing care for moms and babies.</p>
+                <div class="lead-panel-grid">
+                    <div class="lead-panel-card">
+                        <div class="lead-panel-img-frame">
+                            <img src="imgs/WhatsApp Image 2025-08-21 at 10.08.15_f08e88b2.jpg" alt="Lead Technician - Subathra" />
+                        </div>
+                        <h3 class="lead-panel-name">Subathra Lakshmanan</h3>
+                        <p class="lead-panel-role">Founder & Lead Technician</p>
+                    </div>
+                    <!-- Add more panel members here if needed -->
+                </div>
+            </div>
+        </section>
+
         <!-- Trusted By Families Section -->
         <section class="trusted-by-section page-section">
             <div class="container">
@@ -592,22 +836,17 @@
                 <p class="section-subtitle">Our impact in numbers reflects the trust families place in our care.</p>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <h3>5,000+</h3>
+                        <h3>100+</h3>
                         <p>Families Served</p>
                         <span class="underline"></span>
                     </div>
                     <div class="stat-card">
-                        <h3>98%</h3>
+                        <h3>100%</h3>
                         <p>Satisfaction Rate</p>
                         <span class="underline"></span>
                     </div>
                     <div class="stat-card">
-                        <h3>25</h3>
-                        <p>Certified Specialists</p>
-                        <span class="underline"></span>
-                    </div>
-                    <div class="stat-card">
-                        <h3>8</h3>
+                        <h3>3</h3>
                         <p>Years of Excellence</p>
                         <span class="underline"></span>
                     </div>
@@ -615,49 +854,6 @@
             </div>
         </section>
 
-        <!-- Our Values Section -->
-        <section class="our-values-section page-section">
-            <div class="container">
-                <h2 class="section-header">Our <span class="highlight">Values</span></h2>
-                <p class="section-subtitle">The principles that guide everything we do at Suba's Guardian Touch.</p>
-                <div class="values-grid">
-                    <div class="feature-card compassionate">
-                        <div class="icon-background"></div>
-                        <div class="icon">
-                            <!-- Heart Icon -->
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.03L12 21.35Z" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <h3>Compassionate Care</h3>
-                        <p>We approach every interaction with empathy, understanding the unique challenges of the postpartum period and early parenthood.</p>
-                    </div>
-                    <div class="feature-card evidence-based">
-                        <div class="icon-background"></div>
-                        <div class="icon">
-                            <!-- Flask Icon -->
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14.99 3.99L12 6.99L9 3.99L6 6.99L3 3.99L2.99 3.99C1.89 3.99 1 4.88 1 5.99V14.99C1 16.1 1.89 17 2.99 17H12.99C14.1 17 15 16.1 15 14.99V5.99C15 4.88 14.11 3.99 13.01 3.99L14.99 3.99ZM20.99 11.99C20.99 10.88 20.1 9.99 18.99 9.99H17.99L17.99 7.99C17.99 6.88 17.1 5.99 15.99 5.99C14.88 5.99 13.99 6.88 13.99 7.99V9.99H12.99V5.99L14.99 3.99ZM20.99 11.99L20.99 11.99Z" fill="currentColor"/>
-                                <path d="M12 2L4 6V11C4 16.5 7.5 20.78 12 22C16.5 20.78 20 16.5 20 11V6L12 2ZM18 11L12 19.82L6 11V7.18L12 4.18L18 7.18V11Z" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <h3>Evidence-Based Practice</h3>
-                        <p>Our techniques are grounded in scientific research, ensuring that our services provide real benefits for mothers and babies.</p>
-                    </div>
-                    <div class="feature-card inclusive">
-                        <div class="icon-background"></div>
-                        <div class="icon">
-                            <!-- People/Community Icon -->
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 11C18.21 11 20 9.21 20 7C20 4.79 18.21 3 16 3C13.79 3 12 4.79 12 7C12 9.21 13.79 11 16 11ZM8 11C10.21 11 12 9.21 12 7C12 4.79 10.21 3 8 3C5.79 3 4 4.79 4 7C4 9.21 5.79 11 8 11ZM16 13C13.33 13 8 14.34 8 17V21H24V17C24 14.34 18.67 13 16 13ZM8 13C5.33 13 0 14.34 0 17V21H16V17C16 14.34 10.67 13 8 13Z" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <h3>Inclusive Community</h3>
-                        <p>We welcome all families, recognizing and celebrating the diversity of parenting journeys and family structures.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- What Our Clients Say Section (Extended Version) -->
         <section class="extended-client-say-section page-section">
@@ -669,11 +865,11 @@
                         <div class="client-info">
                             <!-- Initials removed -->
                             <div class="client-name">
-                                <h3>Jessica T.</h3>
+                                <h3>Hasvany</h3>
                                 <p>Mother of 2-month-old</p>
                             </div>
                         </div>
-                        <p class="quote">"The infant massage class was a game-changer for my baby's colic. Now we have a beautiful bedtime routine that helps him sleep through the night!"</p>
+                        <p class="quote">"Sis Subathara did baby massage for both my first child in 2021 and I believe her skills made him grow strongly! So I engaged her again for my 2nd child in 2024! She's very understanding and reassuring. She had good knowledge about babies and gives good advice!  "</p>
                         <div class="stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
@@ -682,11 +878,11 @@
                         <div class="client-info">
                             <!-- Initials removed -->
                             <div class="client-name">
-                                <h3>Rachel K.</h3>
-                                <p>Mother of twins</p>
+                                <h3>Ishu Gupta</h3>
+                                <p>Mother of 3-month-old</p>
                             </div>
                         </div>
-                        <p class="quote">"The postnatal massage helped me recover from my C-section so much faster. The therapists are incredibly knowledgeable and caring."</p>
+                        <p class="quote">""I loved the massages and how Subathra patiently took my queries and helped to answer them. She even went an extra mile to help me with baby massage and also didn’t show any signs of rush when I needed a little more time before we could start the session.""</p>
                         <div class="stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
@@ -695,11 +891,11 @@
                         <div class="client-info">
                             <!-- Initials removed -->
                             <div class="client-name">
-                                <h3>Amanda W.</h3>
+                                <h3>Jeeva Lakshmi</h3>
                                 <p>First-time mom</p>
                             </div>
                         </div>
-                        <p class="quote">"As a first-time mom, I was so anxious about handling my newborn. The baby massage classes gave me confidence and a beautiful way to bond with my daughter."</p>
+                        <p class="quote">"Thanks for the baby shower. Really appreciate all the knowledge and advice you shared with me. You took care of baby really well and were a big support for me as well."</p>
                         <div class="stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
@@ -708,11 +904,11 @@
                         <div class="client-info">
                             <!-- Initials removed -->
                             <div class="client-name">
-                                <h3>David L.</h3>
-                                <p>Father of 4-month-old</p>
+                                <h3>Meena </h3>
+                                <p>First-time mom</p>
                             </div>
                         </div>
-                        <p class="quote">"I was hesitant to join the dad's massage class, but it's been incredible for bonding with my son. The techniques are easy to learn and he loves our massage time!"</p>
+                        <p class="quote">"Subathra is a very professional, skilled and knowledgeable. Each session with her is incredibly relaxing, as she adjusts the pressure to my tolerance."</p>
                         <div class="stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
@@ -721,11 +917,11 @@
                         <div class="client-info">
                             <!-- Initials removed -->
                             <div class="client-name">
-                                <h3>Sophia M.</h3>
-                                <p>Mother of 8-month-old</p>
+                                <h3>Shivasangarey</h3>
+                                <p>Mother of newborn</p>
                             </div>
                         </div>
-                        <p class="quote">"The baby massage techniques have been wonderful for my daughter's development. I've noticed improvements in her sleep, digestion, and overall happiness."</p>
+                        <p class="quote">"Thanks to Suba sis for helping with the baby shower and post-natal massage. She is conscious and sensitive to my baby's needs and generous in sharing her knowledge about baby care. She helped and assured us promptly."</p>
                         <div class="stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
@@ -734,11 +930,11 @@
                         <div class="client-info">
                             <!-- Initials removed -->
                             <div class="client-name">
-                                <h3>Lisa P.</h3>
+                                <h3>Dr. Rishika Dey</h3>
                                 <p>Mother of 3-month-old</p>
                             </div>
                         </div>
-                        <p class="quote">"The prenatal massage helped me through a difficult pregnancy, and I've continued with postnatal sessions. The difference in my physical and mental wellbeing is remarkable."</p>
+                        <p class="quote">"Sis Subathra did massage for our daughter and she thoroughly enjoyed it. Baby was very relaxed after massage and went to deep sleep. She does massage very well and never rushes. Will recommend her services."</p>
                         <div class="stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
@@ -748,6 +944,27 @@
         </section>
 
     </main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-phone"></i> +65 9725 9400</p>
+            <p><i class="fas fa-envelope"></i> suba_17@hotmail.com</p>
+        </div>
+        <h3>Follow Us</h3>
+        <ul class="social-links">
+            <li><a href="https://www.instagram.com/subasguardiantouch/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100071837333188" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://wa.me/+6597259400" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+            <li><a href="mailto:suba_17@hotmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+            <li><a href="https://www.youtube.com/@subasguardiantouch" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Suba's Guardian Touch. All rights reserved.</p>
+    </div>
+</footer>
 
     <script>
         // Highlight the current page in the navbar
@@ -761,7 +978,7 @@
 
                 // For index.html, highlight "Home" (or Suba's Guardian Touch if you prefer)
                 if (
-                    (currentPage === '' || currentPage === 'index.html') && link.getAttribute('href').includes('#home')
+                    (currentPage === '' || currentPage === 'index.html') && link.getAttribute('href').includes('#about')
                 ) {
                     link.classList.add('active');
                 }
@@ -770,7 +987,7 @@
                     link.classList.add('active');
                 }
                 // For Contact Us section (SPA style)
-                else if (window.location.hash === '#contact-us' && link.getAttribute('href').includes('#contact-us')) {
+                else if (currentPage === 'contactus.html' && link.getAttribute('href').includes('contactus.html')) {
                     link.classList.add('active');
                 }
             });

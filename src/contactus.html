@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suba's Guardian Touch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="favicon_io/favicon-16x16.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --light-pink: #fce4ec;
+            --medium-pink: #ffade5;
+            --dark-pink: #ff70b8;
+            --purple: #a970ff;
+            --light-purple: #e0b0ff;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #fff;
+            --gradient-light-pink-purple: linear-gradient(to right, #ffade5, #e0b0ff);
+            --gradient-pink-purple: linear-gradient(to right, #ff70b8, #a970ff);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f8fa; /* A very light grey/off-white background */
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0px;
+        }
+
+        /* Navbar Styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1000;
+            right: 1.5px;
+            right: 2mm;
+            top: 0.1em;
+        }
+
+        .nav-links {
+            background: var(--gradient-light-pink-purple);
+            border-radius: 50px;
+            padding: 8px 15px;
+            display: flex;
+            gap: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        .nav-links a.active,
+        .nav-links a:not(.disabled):hover { /* Apply hover only if not disabled */
+            background-color: rgba(255, 255, 255, 0.2); /* Slight white overlay on hover/active */
+            color: var(--white);
+        }
+
+        .nav-links a.disabled {
+            color:#983ca0;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #1a1a1a; /* Dark black */
+            color: #f0f0f0; /* Off-white text */
+            padding: 20px 10px;
+            text-align: center;
+            border-top: 3px solid var(--purple); /* A subtle premium border, change color as desired */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around; /* Distribute space around items */
+            align-items: flex-start; /* Align items to the top */
+            max-width: 1200px; /* Max width for content */
+            margin: 0 auto; /* Center the content block */
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            gap: 30px; /* Space between flex items */
+        }
+
+        .contact-info,
+        .social-media {
+            flex: 1; /* Allow these sections to grow and shrink */
+            min-width: 280px; /* Minimum width to prevent content from becoming too narrow */
+            margin-bottom: 20px; /* Space below sections on smaller screens */
+            text-align: left; /* Align text within these sections to the left */
+        }
+
+        .contact-info h3,
+        .social-media h3 {
+            color: var(--dark-pink); /* Accent color for headings */
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p .fas {
+            margin-right: 10px;
+            color: #f0f0f0; /* Icon color */
+            font-size: 1.1em;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start; /* Align social icons to the left */
+            margin-top: 15px;
+        }
+
+        .social-links li {
+            margin-right: 20px; /* Space between social icons */
+        }
+
+        .social-links a {
+            color: #f0f0f0; /* Icon color */
+            font-size: 28px; /* Larger icon size */
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+            display: inline-block; /* Allows transform to work properly */
+        }
+
+        .social-links a:hover {
+            color: var(--medium-pink); /* Brighter blue on hover */
+            transform: translateY(-3px); /* Subtle lift effect on hover */
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            padding-top: 0px;
+            border-top: 1px solid #333; /* Separator line */
+            font-size: 0.85em;
+            color: #b0b0b0; /* Lighter grey for copyright text */
+            padding-bottom: 20px;
+        }
+
+        .follow {
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+
+        /* Fading animation */
+        @keyframes fade {
+            from {opacity: 0.4;}
+            to {opacity: 1;}
+        }
+
+        /* Section Header Styles */
+        .section-header {
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            text-align: center;
+            color: var(--purple);
+        }
+        .section-header.send-message {
+            color: var(--dark-pink);
+        }
+        @media (min-width: 768px) {
+            .section-header {
+                text-align: left;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
+
+            .footer-content {
+                flex-direction: column; /* Stack items vertically */
+                align-items: center; /* Center items when stacked */
+                text-align: center; /* Center text within sections */
+            }
+
+            .contact-info,
+            .social-media {
+                min-width: unset; /* Remove min-width constraint */
+                width: 100%; /* Take full width */
+                margin-bottom: 00px;
+            }
+
+            .social-links {
+                justify-content: center; /* Center social icons */
+            }
+
+            .contact-info p {
+                justify-content: center; /* Center contact info lines */
+            }
+        }
+
+        @media (max-width: 480px) {
+            
+            .nav-links {
+                gap: 0px;
+            }
+
+            .nav-links a {
+                padding: 5px 10px;
+                font-size: 0.85em;
+            }
+            
+            .footer {
+                padding: 10px 15px;
+            }
+
+            .contact-info h3,
+            .social-media h3 {
+                font-size: 1.4em;
+                text-align: center;
+                
+            }
+
+            .social-links{
+                margin-top: -30px;
+            }
+            .social-links a {
+                font-size: 24px;
+                margin: 0 8px; /* Adjust spacing for smaller screens */
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8em;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            .features-grid, .testimonials-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature-card, .testimonial-card {
+                max-width: 90%;
+            }
+            .why-choose-section h2, .client-say-section h2 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
+            .hero-section {
+                padding: 60px 15px;
+            }
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+            .hero-content p {
+                font-size: 1em;
+            }
+            .hero-buttons .button {
+                width: 80%;
+                font-size: 1em;
+            }
+            .why-choose-section, .client-say-section {
+                padding: 60px 15px;
+            }
+            .feature-card, .testimonial-card {
+                padding: 25px;
+            }
+            .client-info {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .client-initials {
+                margin: 0 0 15px 0;
+            }
+            .read-more-reviews {
+                padding: 12px 25px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+            padding: 10px 15px;
+            }
+            .nav-links {
+                gap: 0px;
+            }
+            .nav-links a {
+                padding: 5px 10px;
+                font-size: 0.85em;
+            }
+            .hero-content h1 {
+                font-size: 1.8em;
+            }
+            .hero-content p {
+                font-size: 0.9em;
+            }
+            .why-choose-section h2, .client-say-section h2 {
+                font-size: 1.8em;
+            }
+            .feature-card h3 {
+                font-size: 1.3em;
+            }
+            .feature-card p, .testimonial-card .quote {
+                font-size: 0.9em;
+            }
+            .client-name h3 {
+                margin: 0;
+                font-size: 1.4em;
+                color: var(--text-dark);
+            }
+            .client-name p {
+                font-size: 0.85em;
+            }
+        }
+
+        /* Form Styles */
+        .contact-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--dark-pink);
+            outline: none;
+        }
+
+        .form-btn {
+            background: var(--dark-pink);
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-btn i {
+            margin-right: 8px;
+        }
+
+        .form-btn:hover {
+            background: var(--medium-pink);
+        }
+
+        /* Icon color for phone, email, social media in contact info */
+        .flex.items-center.text-gray-700 > i {
+            color: var(--purple) !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-links" id="navbar">
+                <a href="about.html" >About Us</a> 
+                <a href="index.html" class="disabled" data-page="gentle-touch">Suba's Guardian Touch</a>
+                <a href="contactus.html" data-page="contact-us">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
+        <div class="w-full max-w-4xl bg-white p-8 md:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row gap-10">
+
+            <section class="flex-1">
+                <h2 class="section-header">Get in Touch</h2>
+                <p class="text-lg text-gray-600 mb-8 text-center md:text-left">
+                    We'd love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="flex items-center text-gray-700">
+                        <i class="fas fa-phone-alt text-2xl text-pink-500 mr-4"></i>
+                        <div>
+                            <h3 class="font-medium text-lg">Phone</h3>
+                            <p class="text-md">+65 9725 94009</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center text-gray-700">
+                        <i class="fas fa-envelope text-2xl text-pink-500 mr-4"></i>
+                        <div>
+                            <h3 class="font-medium text-lg">Email</h3>
+                            <p class="text-md">suba_17@hotmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center text-gray-700">
+                        <i class="fas fa-share-alt text-2xl text-pink-500 mr-4"></i>
+                        <div>
+                            <h3 class="font-medium text-lg">Social Media</h3>
+                            <div class="flex space-x-6 mt-2">
+                                <a href="https://facebook.com" target="_blank" class="text-gray-500 hover:text-blue-600 text-3xl transition duration-200 icon-hover">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="text-gray-500 hover:text-purple-600 text-3xl transition duration-200 icon-hover">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://wa.me/+6597259400" target="_blank" class="text-gray-500 hover:text-green-500 text-3xl transition duration-200 icon-hover">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                 <a href="https://www.youtube.com/@subasguardiantouch" target="_blank" class="text-gray-500 hover:text-red-600 text-3xl transition duration-200 icon-hover">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="flex-1 mt-10 md:mt-0">
+                <h2 class="section-header send-message">Send Us a Message</h2>
+                <form
+                    action="https://formspree.io/f/mwpqdzvo"
+                    method="POST"
+                    class="contact-form"
+                >
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment-dots"></i> Your Message</label>
+                        <textarea id="message" name="message" required placeholder="Type your message"></textarea>
+                    </div>
+                    <button type="submit" class="form-btn">
+                        <i class="fas fa-paper-plane"></i> Send
+                    </button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-phone"></i> +65 9725 9400</p>
+            <p><i class="fas fa-envelope"></i> suba_17@hotmail.com</p>
+        </div>
+        <h3 class="follow">Follow Us</h3>
+        <ul class="social-links">
+            <li><a href="https://www.instagram.com/subasguardiantouch/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100071837333188" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://wa.me/+6597259400" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+            <li><a href="mailto:suba_17@hotmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+            <li><a href="https://www.youtube.com/@subasguardiantouch" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <br>
+        <p>&copy; 2025 Suba's Guardian Touch. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+        // Highlight the current page in the navbar
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const currentPage = window.location.pathname.split('/').pop();
+
+            navLinks.forEach(link => {
+                // Remove all active classes first
+                link.classList.remove('active');
+
+                // For index.html, highlight "Home" (or Suba's Guardian Touch if you prefer)
+                if (
+                    (currentPage === '' || currentPage === 'index.html') && link.getAttribute('href').includes('#home')
+                ) {
+                    link.classList.add('active');
+                }
+                // For About Us page
+                else if (currentPage === 'about.html' && link.getAttribute('href').includes('about.html')) {
+                    link.classList.add('active');
+                }
+                // For Contact Us section (SPA style)
+                else if (currentPage === 'contactus.html' && link.getAttribute('href').includes('contactus.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Multiple independent slideshows
+
+    class Slideshow {
+        constructor(container) {
+            this.container = container;
+            this.slides = container.querySelectorAll('.mySlides');
+            this.index = 0;
+            this.interval = null;
+
+            // Bind arrow events
+            const prev = container.querySelector('.prev');
+            const next = container.querySelector('.next');
+            if (prev) prev.addEventListener('click', () => this.plusSlides(-1));
+            if (next) next.addEventListener('click', () => this.plusSlides(1));
+
+            this.showSlides(this.index);
+            this.startAuto();
+            // Pause on mouse over
+            container.addEventListener('mouseenter', () => this.stopAuto());
+            container.addEventListener('mouseleave', () => this.startAuto());
+        }
+
+        showSlides(n) {
+            if (this.slides.length === 0) return;
+            if (n >= this.slides.length) this.index = 0;
+            else if (n < 0) this.index = this.slides.length - 1;
+            else this.index = n;
+
+            this.slides.forEach(slide => slide.style.display = "none");
+            this.slides[this.index].style.display = "block";
+        }
+
+        plusSlides(n) {
+            this.showSlides(this.index + n);
+            this.restartAuto();
+        }
+
+        startAuto() {
+            if (this.interval) return;
+            this.interval = setInterval(() => this.plusSlides(1), 5000);
+        }
+
+        stopAuto() {
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+
+        restartAuto() {
+            this.stopAuto();
+            this.startAuto();
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.slideshow-container').forEach(container => {
+            new Slideshow(container);
+        });
+    });
+</script>
+</body>
+</html>
