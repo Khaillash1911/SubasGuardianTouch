@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Suba's Guardian Touch</title>
+    <title>About - Suba's Guardian Touch</title>
     <link rel="icon" type="image/png" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" href="favicon_io/favicon-16x16.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -713,8 +713,8 @@
                 max-width: 100%;
             }
             .lead-panel-img-frame {
-                width: 90px;
-                height: 90px;
+                width: 120px;
+                height: 120px;
                 margin-bottom: 12px;
             } 
             .lead-panel-name {
@@ -722,6 +722,23 @@
             }
             .lead-panel-role {
                 font-size: 0.95em;
+            }
+        }
+
+        /* Justify and center paragraphs only in growing-together reversed content-column */
+        .two-column-section.growing-together.reversed .content-column p {
+            text-align: justify;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 700px;
+        }
+
+        /* On mobile, use left alignment for readability */
+        @media (max-width: 480px) {
+            .two-column-section.growing-together.reversed .content-column p {
+                text-align: left;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     </style>
@@ -745,6 +762,31 @@
         <section class="page-section">
             <div class="container">
                 <p class="section-subtitle">The story of how Suba's Guardian Touch came to be and our path to helping countless mothers and babies.</p>
+
+                <div class="two-column-section growing-together reversed">
+                        <div class="slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="imgs/Growing Together/gt1.jpg" style="width:100%">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="imgs/Growing Together/gt2.jpg" style="width:100%">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="imgs/Growing Together/gt3.jpg" style="width:100%">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="imgs/Growing Together/gt4.jpg" style="width:100%">
+                            </div>
+                            <!-- Arrows -->
+                            <a class="prev" onclick="plusSlides(-1)">❮</a>
+                            <a class="next" onclick="plusSlides(1)">❯</a>
+                        </div>
+                        <div class="content-column">
+                            <h3>Growing Together</h3>
+                            <p>Suba’s Guardian Touch was founded in 2019 by Subathra, a mother of two with a lifelong passion for nurturing and supporting families. Her journey began with a love for caring for her own children, where daily massage sessions became meaningful moments of bonding. Guided and inspired by her aunt, a confinement nanny, Subathra expanded her skills beyond lactation cookies to mastering baby massage and bathing techniques.</p>
+                            <p> What started as a personal practice soon grew into a calling to help other mothers experience the same comfort, connection, and confidence. With a focus on baby massage, maternal wellness, and holistic care, we aim to empower families through knowledge, nurturing, and hands-on guidance. Our mission is simple: to create a safe, supportive space where both mother and child can thrive during the precious early stages of life.</p>
+                        </div>
+                </div>
                 
                 <div class="two-column-section our-journey reversed">
                     <div class="slideshow-container">
@@ -779,33 +821,8 @@
                     </div>
                     <div class="content-column">
                         <h3>Our Journey</h3>
-                        <p>From humble beginnings, Suba's Guardian Touch has grown into a trusted name for nurturing care. Our journey began with a passion for supporting mothers and babies, and every step has been guided by our commitment to compassion and excellence.</p>
-                        <p>Through years of dedication, we've expanded our services and touched the lives of thousands of families, always striving to provide the best support and education for every parent and child we meet.</p>
-                    </div>
-                </div>
-
-                <div class="two-column-section growing-together reversed">
-                    <div class="slideshow-container">
-                        <div class="mySlides fade">
-                            <img src="imgs/Growing Together/gt1.jpg" style="width:100%">
-                        </div>
-                        <div class="mySlides fade">
-                            <img src="imgs/Growing Together/gt2.jpg" style="width:100%">
-                        </div>
-                        <div class="mySlides fade">
-                            <img src="imgs/Growing Together/gt3.jpg" style="width:100%">
-                        </div>
-                        <div class="mySlides fade">
-                            <img src="imgs/Growing Together/gt4.jpg" style="width:100%">
-                        </div>
-                        <!-- Arrows -->
-                        <a class="prev" onclick="plusSlides(-1)">❮</a>
-                        <a class="next" onclick="plusSlides(1)">❯</a>
-                    </div>
-                    <div class="content-column">
-                        <h3>Growing Together</h3>
-                        <p>As word spread about the benefits of our specialized approach, Suba's Guardian Touch quickly became a beloved resource in the community. By 2018, we had expanded our team to include certified lactation consultants, postnatal doulas, and pediatric massage therapists to provide comprehensive support for new families.</p>
-                        <p>Our growth has always been guided by the needs of our clients. When mothers asked for more educational resources, we developed our signature workshop series, "Nurturing Touch for Life," which has now helped over 1,000 families develop confidence in caring for their babies.</p>
+                        <p>To strengthen her expertise, Subathra furthered her training in Bali, where she completed intensive courses in baby and maternal massage. Over the course of a month, she immersed herself in hands-on practice, refining her techniques under experienced trainers and learning holistic approaches rooted in both tradition and modern care.   </p>
+                        <p>Beyond the technical skills, the experience gave her valuable insights into the emotional and physical well-being of both mother and child, reinforcing her belief that nurturing care goes beyond physical touch.</p>
                     </div>
                 </div>
             </div>
@@ -814,7 +831,7 @@
                 <!-- Add Lead Technician Section Here -->
         <section class="lead-technician-section page-section">
             <div class="container">
-                <h2 class="section-header">Meet Our <span class="highlight">Lead Technician</span></h2>
+                <h2 class="section-header">Meet Our <span class="highlight">Lead Massage Therapist</span></h2>
                 <p class="section-subtitle">Our panel consists of experienced professionals dedicated to nurturing care for moms and babies.</p>
                 <div class="lead-panel-grid">
                     <div class="lead-panel-card">
@@ -822,7 +839,7 @@
                             <img src="imgs/WhatsApp Image 2025-08-21 at 10.08.15_f08e88b2.jpg" alt="Lead Technician - Subathra" />
                         </div>
                         <h3 class="lead-panel-name">Subathra Lakshmanan</h3>
-                        <p class="lead-panel-role">Founder & Lead Technician</p>
+                        <p class="lead-panel-role">Founder & Lead Massage Therapist</p>
                     </div>
                     <!-- Add more panel members here if needed -->
                 </div>
@@ -846,7 +863,7 @@
                         <span class="underline"></span>
                     </div>
                     <div class="stat-card">
-                        <h3>3</h3>
+                        <h3>5</h3>
                         <p>Years of Excellence</p>
                         <span class="underline"></span>
                     </div>
@@ -856,7 +873,7 @@
 
 
         <!-- What Our Clients Say Section (Extended Version) -->
-        <section class="extended-client-say-section page-section">
+        <section id="reviews" class="extended-client-say-section page-section">
             <div class="container">
                 <h2 class="section-header">Reviews From <span class="highlight">Happy Moms</span></h2>
                 <p class="section-subtitle">Real stories from families who have experienced the Suba's Guardian Touch difference.</p>
